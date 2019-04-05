@@ -30,13 +30,70 @@ Edit this document to include your answers after each question. Make sure to lea
 
 1. Describe the biggest difference between `.forEach` & `.map`.
 
+The .forEach doesn't return anything.  For each array element it will call the function, and when it's finished, it's done.  I think .forEach is a good general tool if touching each element in an array is important.
+
+The .map also calls the function and passes through each array element, but it will build a new array with the values.  Map is great for changing elements in an array. For instance, in the case of numbers, multiplying each number by something like 3 and returning a new array with the changes.
+
+
 2. What is the difference between a function and a method?
+
+  A method is a function inside of an object, or should I say within the scope of an object.  So I guess one could say a method works implicitly inside the object it is called in.
+
+  A function is called by name.  Perhaps one could say a method is too, but I think the difference is that a function doesn't have  an object associated with it. 
 
 3. What is closure?
 
+  This is where an inner function has access to an outer function that encapsulates it.  Maybe it would be better to say it's a function that is inside the scope of another function and has access to its variables.
+
+
 4. Describe the four rules of the 'this' keyword.
 
+   I will have to create an example to help with these answers.
+
+   First: Global context.  When in the global scope, the value of 'this' will be in the window/console Object.
+
+   Second: Implicit binding.  Whenever a function is called by a preceding dot, the object left of the dot gets “this”.  myDog gets “this”.
+
+		const myDog = {
+            greeting: “Woof”;
+            dogTalk: function(food){
+ 		    console.log(`${this.dogTalk}, I like ${food}`	
+		  }
+        };
+         myDog.greeting(‘bones’);
+
+    Third: New Binding. Whenever a constructor function is used, ‘this’ refers to the specific instance of the object that is created and returned by the constructor function.  ‘This’ is referring to peter and sally.
+
+		function Person(name){
+  		   this.name = name;
+           this.talk = function() {
+  			console.log(this.name + ‘ is having fun’);
+          }
+		}
+		const peter = new Person(‘Peter’);
+        const sally = new Person(‘Sally’);
+
+
+     Fourth: Explicit Binding.  When Javascript’s call or apply method is used, ‘this’ is explicitly defined.  This can been seen using .call, .apply, or .bind. In this case, peter and sally will switch.
+
+		function Person(name){
+  		    this.name = name;
+            this.talk = function() {
+  			console.log(this.name + ‘ is having fun’);
+          }
+		}
+		const peter = new Person(‘Peter’);
+        const sally = new Person(‘Sally’);
+
+        peter.talk.call(sally);
+        sally.talk.call(peter);
+
+
+
+
 5. Why do we need super() in an extended class?
+
+    Super is used to access and call functions on an object’s parent.
 
 ## Project Set up
 
