@@ -31,7 +31,7 @@ CuboidMaker.prototype.volume = function() {
 */
 
 CuboidMaker.prototype.surfaceArea = function() { 
-  return(`The volume is ${this.surf}`);
+  return(`The surface area is ${this.surf}`);
 }
 
 /* == Step 4: Create a new object that uses CuboidMaker ==
